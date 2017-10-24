@@ -8,7 +8,13 @@ import {
   SIGNUP_USER_FAILURE
 } from '../actions/user';
 
-export default function (state, action) {
+const defaultState = {
+  authenticated: false,
+  loading: false,
+  error: null
+};
+
+export default function (state=defaultState, action) {
   switch (action.type) {
 
     // Sign In
@@ -26,5 +32,8 @@ export default function (state, action) {
       return {...state, authenticated: true, loading: false};
     case SIGNUP_USER_FAILURE:
       return {...state, authenticated: false, loading: false, error: action.error};
+
+    default:
+      return state;
   }
 }
