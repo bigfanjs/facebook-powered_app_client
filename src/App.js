@@ -1,11 +1,21 @@
 import React, { Component } from 'react';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+
+import Async from './components/async-component';
+import PrivateRoute from './components/private-route';
 
 import './App.css';
+
+const Home = Async(() => import('./scenes/home'));
 
 class App extends Component {
   render() {
     return (
-      <div className="App">So Far So Good</div>
+      <Router>
+        <div>
+          <PrivateRoute exact path="/" component={Home} />
+        </div>
+      </Router>
     );
   }
 }
