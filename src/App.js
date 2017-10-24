@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import Async from './components/async-component';
 import PrivateRoute from './components/private-route';
@@ -14,11 +14,11 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
+        <Switch>
           <PrivateRoute exact path="/" component={Home} />
           <Route path="/signin" component={Signin} />
           <Route path="/signup" component={Signup} />
-        </div>
+        </Switch>
       </Router>
     );
   }
