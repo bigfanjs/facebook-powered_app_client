@@ -8,6 +8,7 @@ import './App.css';
 
 const Home = Async(() => import('./scenes/home'));
 const Signin = Async(() => import('./scenes/signin'));
+const Signup = Async(() => import('./scenes/signup'));
 
 class App extends Component {
   render() {
@@ -16,6 +17,7 @@ class App extends Component {
         <div>
           <PrivateRoute exact path="/" component={Home} />
           <Route path="/signin" component={Signin} />
+          <Route path="/signup" component={Signup} />
         </div>
       </Router>
     );
