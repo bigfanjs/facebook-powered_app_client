@@ -1,26 +1,19 @@
 import React, {Component} from 'react';
 
-export default (getComponent) => (
-  class Async extends Component {
-    static Component = null;
+export default (load) => (
+  class AsyncComponent extends Component {
+    state = {component: null}
 
-    state = {Component: Async.Component}
+    async componentWillMount() {
+      const { default: component } = await load();
 
-    componentWillMount() {
-      if (!this.state.Component) {
-        getComponent().then(Component => {
-          Async.Component = Component;
-          this.setState({ Component });
-        });
-      }
+      this.setState({ component });
     }
-  
+
     render() {
-      const {Component} = this.state;
+      const Component = this.state.component;
 
-      if (!Component) return null;
-
-      return <Component {...this.props} />;
+      return Component ? <Component {...this.props} /> : null;
     }
   }
 );
