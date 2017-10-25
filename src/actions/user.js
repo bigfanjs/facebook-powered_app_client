@@ -25,10 +25,10 @@ function signinUserFailure(error) {
   };
 }
 
-export function signinUser(email, password) {
+export const signinUser = ({email, password}) => {
   const config = {
     method: 'post',
-    headers: { 'Content-Type':'application/x-www-form-urlencoded' },
+    headers: {'Content-Type':'application/x-www-form-urlencoded'},
     body: `email=${ email }&password=${ password }`
   };
 
@@ -46,7 +46,7 @@ export function signinUser(email, password) {
   
     dispatch();
   };
-}
+};
 
 function signupUserRequest() {
   return {
@@ -67,7 +67,7 @@ function signupUserFailure(error) {
   };
 }
 
-export function signupUser(email, password) {
+export const signupUser = (email, password) => {
   const config = {
     method: 'post',
     headers: { 'Content-Type':'application/x-www-form-urlencoded' },
@@ -92,4 +92,4 @@ export function signupUser(email, password) {
   
     dispatch();
   };
-}
+};
