@@ -35,16 +35,22 @@ export const signinUser = ({email, password}) => {
   return (dispatch) => {
     dispatch(signinUserRequest());
     fetch('/api/users/signin', config)
-      .then((res) => res.json())
-      .then((json) => {
-        localStorage.setItem('jwt', json.response.data.token);
+      .then((res) => {
+        if (!res.ok) {
+          return Promise.reject({
+            error: 'Invalid password or username'
+          });
+        }
+
+        return res.json();
+      })
+      .then((user) => {
+        localStorage.setItem('jwt', user.token);
         dispatch(signinUserSuccess());
       })
       .catch((error) => {
-        dispatch(signinUserFailure(error));
+        dispatch(signinUserFailure({error}));
       });
-  
-    dispatch();
   };
 };
 
@@ -77,19 +83,21 @@ export const signupUser = (email, password) => {
   return (dispatch) => {
     dispatch(signupUserRequest());
     fetch('/api/users/signup', config)
-      .then((res) => res.json())
-      .then((user) => {
-        if (!user.response.ok) {
-          dispatch(signupUserFailure(user.message));
-        } else {
-          localStorage.setItem('jwt', user.data.token);
-          dispatch(signupUserSuccess());
+      .then((res) => {
+        if (!res.ok) {
+          return Promise.reject({
+            error: 'Invalid password or username'
+          });
         }
+
+        return res.json();
+      })
+      .then((user) => {
+        localStorage.setItem('jwt', user.token);
+        dispatch(signupUserSuccess());
       })
       .catch((error) => {
-        console.error(error);
+        dispatch(signupUserFailure({error}));
       });
-  
-    dispatch();
   };
 };
