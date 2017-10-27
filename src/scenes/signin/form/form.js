@@ -25,7 +25,7 @@ class Form extends Component {
   }
 
   render() {
-    const handleSubmit = this.props.handleSubmit;
+    const {handleSubmit, loading} = this.props;
 
     return (
       <form noValidate autoComplete="off" onSubmit={handleSubmit}>
@@ -42,7 +42,13 @@ class Form extends Component {
           component={TextField}
           validate={[required, minLength(8), maxLength(16)]}
         />
-        <Button type="submit" color="primary" raised>Submit</Button>
+        <Button
+          type="submit"
+          color="primary"
+          disabled={loading}
+          raised>
+          Submit
+        </Button>
       </form>
     );
   }
