@@ -1,0 +1,12 @@
+.siginin_error_log {
+  color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffc6c6;
+  height: 34px;
+  width: 100%;
+  margin: auto;
+  font-family: monospace;
+  font-size: large;
+}

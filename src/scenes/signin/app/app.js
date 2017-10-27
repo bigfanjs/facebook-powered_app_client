@@ -1,8 +1,13 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import Paper from 'material-ui/Paper';
 
 import Form from '../form';
+import HyperText from '../hyper-text';
+import ErrorLog from '../error-log';
 import {signinUser} from '../../../actions/user';
+
+import './app.css';
 
 class Signin extends Component {
   constructor(props) {
@@ -17,15 +22,15 @@ class Signin extends Component {
 
   render() {
     return (
-      <div>
-        <Form onSubmit={this.handleSubmit} />
-        <span style={{color: 'red'}}>{ this.props.error }</span>
+      <div className="signin_container">
+        <Paper className="sigin_form">
+          <Form onSubmit={this.handleSubmit} />
+          <HyperText />
+          <ErrorLog />
+        </Paper>
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => ({
-  error: state.user.error
-});
-export default connect(mapStateToProps)(Signin);
+export default connect()(Signin);

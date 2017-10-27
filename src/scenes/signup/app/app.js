@@ -16,7 +16,6 @@ class Signup extends Component {
   }
 
   render() {
-    console.log(this.props.error);
     return (
       <div className="signup_container">
         <Form onSubmit={this.handleSubmit} />

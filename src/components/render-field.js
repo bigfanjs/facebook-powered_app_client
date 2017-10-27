@@ -3,6 +3,7 @@ import TextField from 'material-ui/TextField';
 
 export default ({input, label, meta: {touched, error}, ...rest}) => (
   <TextField
+    margin="normal"
     fullWidth
     label={label}
     placeholder={rest.placeholder}

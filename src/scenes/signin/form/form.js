@@ -7,6 +7,8 @@ import Button from 'material-ui/Button';
 import TextField from '../../../components/render-field';
 import { required, email, minLength, maxLength } from '../../../services/validations';
 
+import './form.css';
+
 class Form extends Component {
   static contextTypes = {
     router: PropTypes.object
@@ -47,7 +49,7 @@ class Form extends Component {
           color="primary"
           disabled={loading}
           raised>
-          Submit
+          Sign in
         </Button>
       </form>
     );
