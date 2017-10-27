@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 import {Field, reduxForm} from 'redux-form';
 import Button from 'material-ui/Button';
 
@@ -6,6 +8,22 @@ import TextField from '../../../components/render-field';
 import { required, email, minLength, maxLength } from '../../../services/validations';
 
 class Form extends Component {
+  static contextTypes = {
+    router: PropTypes.object
+  }
+
+  componentWillMount() {
+    if (this.props.authenticated) {
+      this.context.router.history.push('/');
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.authenticated) {
+      this.context.router.history.push('/');
+    }
+  }
+
   render() {
     const handleSubmit = this.props.handleSubmit;
 
@@ -24,15 +42,14 @@ class Form extends Component {
           component={TextField}
           validate={[required, minLength(8), maxLength(16)]}
         />
-        <Button
-          type="submit"
-          color="primary"
-          raised>
-          Submit
-        </Button>
+        <Button type="submit" color="primary" raised>Submit</Button>
       </form>
     );
   }
 }
-
-export default reduxForm({form: 'signin'})(Form);
+const mapStateToProps = (state) => ({
+  authenticated: state.user.status === 'authenticated',
+  loading: state.user.loading
+});
+const FormContainer = connect(mapStateToProps)(Form);
+export default reduxForm({form: 'signin'})(FormContainer);
