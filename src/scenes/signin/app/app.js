@@ -16,8 +16,16 @@ class Signin extends Component {
   }
 
   render() {
-    return <Form onSubmit={this.handleSubmit} />;
+    return (
+      <div>
+        <Form onSubmit={this.handleSubmit} />
+        <span style={{color: 'red'}}>{ this.props.error }</span>
+      </div>
+    );
   }
 }
 
-export default connect()(Signin);
+const mapStateToProps = (state) => ({
+  error: state.user.error
+});
+export default connect(mapStateToProps)(Signin);

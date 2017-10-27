@@ -1,14 +1,7 @@
+/*-----------------------------|| SIGN IN USER ||-----------------------------*/
 export const SIGNIN_USER = 'SIGNIN_USER';
 export const SIGNIN_USER_SUCCESS = 'SIGNIN_USER_SUCCESS';
 export const SIGNIN_USER_FAILURE = 'SIGNIN_USER_FAILURE';
-
-export const SIGNUP_USER = 'SIGNUP_USER';
-export const SIGNUP_USER_SUCCESS = 'SIGNUP_USER_SUCCESS';
-export const SIGNUP_USER_FAILURE = 'SIGNUP_USER_FAILURE';
-
-export const VERIFY_USER = 'VERIFY_USER';
-export const VERIFY_USER_SUCCESS = 'VERIFY_USER_SUCCESS';
-export const VERIFY_USER_FAILURE = 'VERIFY_USER_FAILURE';
 
 function signinUserRequest() {
   return {
@@ -42,7 +35,7 @@ export const signinUser = ({email, password}) => {
       .then((res) => {
         if (!res.ok) {
           return Promise.reject({
-            error: 'Invalid password or username'
+            message: 'Invalid password or username'
           });
         }
 
@@ -53,10 +46,17 @@ export const signinUser = ({email, password}) => {
         dispatch(signinUserSuccess());
       })
       .catch((error) => {
-        dispatch(signinUserFailure({error}));
+        console.log(error.message);
+        dispatch(signinUserFailure(error.message));
       });
   };
 };
+
+
+/*-----------------------------|| SIGN UP USER ||-----------------------------*/
+export const SIGNUP_USER = 'SIGNUP_USER';
+export const SIGNUP_USER_SUCCESS = 'SIGNUP_USER_SUCCESS';
+export const SIGNUP_USER_FAILURE = 'SIGNUP_USER_FAILURE';
 
 function signupUserRequest() {
   return {
@@ -106,6 +106,12 @@ export const signupUser = ({email, password}) => {
   };
 };
 
+
+/*-----------------------------|| VERIFY USER ||-----------------------------*/
+export const VERIFY_USER = 'VERIFY_USER';
+export const VERIFY_USER_SUCCESS = 'VERIFY_USER_SUCCESS';
+export const VERIFY_USER_FAILURE = 'VERIFY_USER_FAILURE';
+
 function VerifyUserRequest() {
   return {
     type: VERIFY_USER
@@ -148,5 +154,14 @@ export const VerifyUser = (token) => {
         localStorage.removeItem('jwt');
         dispatch(VerifyUserFailure({error}));
       });
+  };
+};
+
+/*-----------------------------|| LOG OUT USER ||-----------------------------*/
+export const SIGNOUT_USER = 'SIGNOUT_USER';
+
+export const signoutUser = () => {
+  return {
+    type: SIGNOUT_USER,
   };
 };

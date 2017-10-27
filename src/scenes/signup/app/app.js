@@ -16,8 +16,17 @@ class Signup extends Component {
   }
 
   render() {
-    return <Form onSubmit={this.handleSubmit} />;
+    console.log(this.props.error);
+    return (
+      <div className="signup_container">
+        <Form onSubmit={this.handleSubmit} />
+        <span>{ this.props.error }</span>
+      </div>
+    );
   }
 }
 
-export default connect()(Signup);
+const mapStateToProps = (state) => ({
+  error: state.user.error
+});
+export default connect(mapStateToProps)(Signup);
