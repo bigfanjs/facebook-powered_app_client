@@ -77,7 +77,7 @@ function signupUserFailure(error) {
   };
 }
 
-export const signupUser = (email, password) => {
+export const signupUser = ({email, password}) => {
   const config = {
     method: 'post',
     headers: { 'Content-Type':'application/x-www-form-urlencoded' },
