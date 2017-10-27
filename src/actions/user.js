@@ -145,6 +145,7 @@ export const VerifyUser = (token) => {
         dispatch(VerifyUserSuccess());
       })
       .catch((error) => {
+        localStorage.removeItem('jwt');
         dispatch(VerifyUserFailure({error}));
       });
   };
