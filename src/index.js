@@ -12,7 +12,9 @@ import {VerifyUser} from './actions/user';
 import './index.css';
 
 const store = createStore(FbPoweredApp, applyMiddleware(thunk));
-store.dispatch(VerifyUser(localStorage.jwt));
+if (localStorage.jwt) {
+  store.dispatch(VerifyUser(localStorage.jwt));
+}
 
 ReactDOM.render(
   <Provider store={store}>
