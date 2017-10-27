@@ -13,7 +13,7 @@ import {
 } from '../actions/user';
 
 const defaultState = {
-  authenticated: false,
+  status: null,
   loading: false,
   error: null
 };
