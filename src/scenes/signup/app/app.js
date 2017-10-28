@@ -1,8 +1,13 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import Paper from 'material-ui/Paper';
 
 import Form from '../form';
+import HyperText from '../hyper-text';
+import ErrorLog from '../error-log';
 import {signupUser} from '../../../actions/user';
+
+import './app.css';
 
 class Signup extends Component {
   constructor(props) {
@@ -18,8 +23,11 @@ class Signup extends Component {
   render() {
     return (
       <div className="signup_container">
-        <Form onSubmit={this.handleSubmit} />
-        <span>{ this.props.error }</span>
+        <Paper className="signup_form">
+          <Form onSubmit={this.handleSubmit} />
+          <HyperText />
+          <ErrorLog />
+        </Paper>
       </div>
     );
   }

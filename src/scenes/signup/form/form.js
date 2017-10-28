@@ -47,7 +47,7 @@ class Form extends Component {
           color="primary"
           disabled={loading}
           raised>
-          Submit
+          SIGN UP
         </Button>
       </form>
     );
