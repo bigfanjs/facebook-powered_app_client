@@ -2,13 +2,13 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
 import AlbumList from '../album-list';
-import {getLoginStatus} from '../../../actions/fb-login-status';
+import {connectToFacebook} from '../../../actions/fb-login-status';
 
 class Home extends Component {
   handleLogin() {
     const {fetchAlbums, dispatch} = this.props;
 
-    dispatch(getLoginStatus())
+    dispatch(connectToFacebook())
       .then(() => { fetchAlbums(); })
       .catch((err) => { console.error(err); });
   }
