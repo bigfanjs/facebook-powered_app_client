@@ -22,6 +22,10 @@ class Home extends Component {
   }
 
   render() {
+    if (!this.props.SDKLoaded) {
+      return <span>Loading Sdk...</span>;
+    }
+
     if (this.props.loading) {
       return <span>checking user connectivity...</span>;
     }
@@ -46,7 +50,8 @@ class Home extends Component {
 const mapStateToProps = (state) => ({
   albums: state.albums,
   connectedToFacebook: state.fbLogin.status === 'connected',
-  loading: state.fbLogin.loading
+  loading: state.fbLogin.loading,
+  SDKLoaded: state.SDKLoaded
 });
 const mapDispatchToProps = (dispatch) => ({
   fetchUserAlbums() {

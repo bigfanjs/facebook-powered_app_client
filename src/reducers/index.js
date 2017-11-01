@@ -4,5 +4,12 @@ import {reducer as form} from 'redux-form';
 import user from './user';
 import albums from './albums';
 import fbLogin from './fb-login';
+import SDKLoaded from './sdk-loaded';
 
-export default combineReducers({user, form, albums, fbLogin});
+export default combineReducers({
+  user,
+  form,
+  albums,
+  fbLogin,
+  SDKLoaded
+});
