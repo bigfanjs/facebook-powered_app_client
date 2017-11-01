@@ -1,6 +1,6 @@
 /* globals FB */
 
-import {getLoginStatus} from './actions/fb-login-status';
+import {getLoginStatus} from './actions/fb-login';
 
 export default (store) => {
   window.fbAsyncInit = () => {

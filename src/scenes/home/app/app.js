@@ -4,7 +4,7 @@ import Button from 'material-ui/Button';
 
 import AlbumList from '../album-list';
 import {fetchAlbums} from '../../../actions/albums';
-import {login} from '../../../actions/fb-login-status';
+import {login} from '../../../actions/fb-login';
 
 class Home extends Component {
   componentWillMount() {
@@ -22,6 +22,10 @@ class Home extends Component {
   }
 
   render() {
+    if (this.props.loading) {
+      return <span>checking user connectivity...</span>;
+    }
+
     return (
       <div className="home_container">
         {
@@ -41,7 +45,8 @@ class Home extends Component {
 
 const mapStateToProps = (state) => ({
   albums: state.albums,
-  connectedToFacebook: state.fbLoginStatus === 'connected'
+  connectedToFacebook: state.fbLogin.status === 'connected',
+  loading: state.fbLogin.loading
 });
 const mapDispatchToProps = (dispatch) => ({
   fetchUserAlbums() {

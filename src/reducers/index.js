@@ -3,6 +3,6 @@ import {reducer as form} from 'redux-form';
 
 import user from './user';
 import albums from './albums';
-import fbLoginStatus from './fb-login-status';
+import fbLogin from './fb-login';
 
-export default combineReducers({user, form, albums, fbLoginStatus});
+export default combineReducers({user, form, albums, fbLogin});
