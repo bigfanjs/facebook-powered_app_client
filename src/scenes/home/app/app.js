@@ -16,7 +16,7 @@ class Home extends Component {
   componentWillReceiveProps(nextProps) {
     const {connectedToFacebook} = this.props;
 
-    if (nextProps.connectToFacebook !== connectedToFacebook) {
+    if (nextProps.connectedToFacebook !== connectedToFacebook) {
       if (connectedToFacebook) this.props.fetchUserAlbums();
     }
   }
