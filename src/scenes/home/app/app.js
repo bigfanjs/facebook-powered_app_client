@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import Button from 'material-ui/Button';
 
 import AlbumList from '../album-list';
 import {fetchAlbums} from '../../../actions/albums';
@@ -25,7 +26,12 @@ class Home extends Component {
       <div className="home_container">
         {
           !this.props.connectedToFacebook ?
-            <button onClick={this.connectToFacebook}>Login</button> :
+            <Button
+              onClick={this.props.connectToFacebook}
+              color="primary"
+              raised>
+              Login To Facebook
+            </Button> :
             <AlbumList albums={this.props.albums} />
         }
       </div>
