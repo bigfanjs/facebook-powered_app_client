@@ -6,7 +6,6 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import Async from './components/async-component';
 import PrivateRoute from './components/private-route';
-import {fetchAlbums} from './actions/albums';
 import {getLoginStatus} from './actions/fb-login-status';
 
 import './App.css';
@@ -16,7 +15,7 @@ const Signin = Async(() => import('./scenes/signin'));
 const Signup = Async(() => import('./scenes/signup'));
 
 class App extends Component {
-  componentDidMount() {
+  componentWillMount() {
     window.fbAsyncInit = () => {
       FB.init({
         appId            : '325131021294419',
@@ -25,11 +24,7 @@ class App extends Component {
         version          : 'v2.10'
       });
 
-      const {fetchUserAlbums, getLoginStatus} = this.props;
-
-      getLoginStatus()
-        .then(() => { fetchUserAlbums(); })
-        .catch((err) => { console.error(err); });
+      this.props.dispatch(getLoginStatus());
     };
 
     (function(d, s, id){
@@ -64,12 +59,4 @@ const mapStateToProps = (state) => ({
   loading: state.user.loading,
   verifying: state.user.status === 'verify'
 });
-const mapDispatchToProps = (dispatch) => ({
-  fetchUserAlbums() {
-    dispatch(fetchAlbums());
-  },
-  getLoginStatus() {
-    return dispatch(getLoginStatus());
-  }
-});
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps)(App);

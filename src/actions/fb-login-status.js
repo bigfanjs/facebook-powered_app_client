@@ -11,30 +11,17 @@ function updateStatus(status) {
 
 export const getLoginStatus = () => (
   (dispatch) => (
-    new Promise((resolve, reject) => {
-      FB.getLoginStatus((res) => {
-        if (res.status === 'connected') {
-          dispatch(updateStatus(res.status));
-          resolve(res);
-        } else {
-          reject();
-        }
-      });
+    FB.getLoginStatus((res) => {
+      dispatch(updateStatus(res.status));
     })
   )
 );
 
-export const connectToFacebook = () => (
+export const login = () => (
   (dispatch) => (
-    new Promise((resolve, reject) => {
-      FB.login((res) => {
-        if (res.authResponse) {
-          dispatch(updateStatus(res.status));
-          resolve(res);
-        } else {
-          reject();
-        }
-      }, {scope: 'user_photos'});
-    })
+    FB.login(
+      (res) => {dispatch(updateStatus(res.status));},
+      {scope: 'user_photos'}
+    )
   )
 );
