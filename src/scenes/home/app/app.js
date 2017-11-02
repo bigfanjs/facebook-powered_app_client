@@ -6,20 +6,6 @@ import AlbumList from '../album-list';
 import {login} from '../../../actions/fb-login';
 
 class Home extends Component {
-  componentWillMount() {
-    if (this.props.connectedToFacebook) {
-      this.props.fetchUserAlbums();
-    }
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const {connectedToFacebook} = this.props;
-
-    if (nextProps.connectedToFacebook !== connectedToFacebook) {
-      if (connectedToFacebook) this.props.fetchUserAlbums();
-    }
-  }
-
   handleLogin() {
     this.props.dispatch(login());
   }
