@@ -1,0 +1,12 @@
+.album_list {
+  list-style-type: none;
+}
+
+.album_item_card {
+  max-width: 345;
+  margin: 0 10px 10px;
+}
+
+.album_item_media {
+  height: 200px;
+}

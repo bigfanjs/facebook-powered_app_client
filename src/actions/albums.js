@@ -20,7 +20,7 @@ function fetchAlbumsFailure(error) {
 
 export const fetchAlbums = () => (
   (dispatch) => {
-    FB.api('me/albums?fields=name,photos{images{source}}', (res) => {
+    FB.api('me/albums?fields=name,description,photos{images{source}}', (res) => {
       if (!res || res.error) {
         dispatch(fetchAlbumsFailure(res && res.error));
       } else {

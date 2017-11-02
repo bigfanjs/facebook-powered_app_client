@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import Button from 'material-ui/Button';
 
 import AlbumList from '../album-list';
-import {fetchAlbums} from '../../../actions/albums';
 import {login} from '../../../actions/fb-login';
 
 class Home extends Component {
@@ -19,6 +18,10 @@ class Home extends Component {
     if (nextProps.connectedToFacebook !== connectedToFacebook) {
       if (connectedToFacebook) this.props.fetchUserAlbums();
     }
+  }
+
+  handleLogin() {
+    this.props.dispatch(login());
   }
 
   render() {
@@ -40,7 +43,7 @@ class Home extends Component {
               raised>
               Login To Facebook
             </Button> :
-            <AlbumList albums={this.props.albums} />
+            <AlbumList />
         }
       </div>
     );
@@ -48,17 +51,8 @@ class Home extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  albums: state.albums,
   connectedToFacebook: state.fbLogin.status === 'connected',
   loading: state.fbLogin.loading,
   SDKLoaded: state.SDKLoaded
 });
-const mapDispatchToProps = (dispatch) => ({
-  fetchUserAlbums() {
-    dispatch(fetchAlbums());
-  },
-  connectToFacebook() {
-    dispatch(login());
-  }
-});
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps)(Home);
