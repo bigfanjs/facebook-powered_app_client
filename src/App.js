@@ -14,6 +14,7 @@ import './App.css';
 const Home = Async(() => import('./scenes/home'));
 const Signin = Async(() => import('./scenes/signin'));
 const Signup = Async(() => import('./scenes/signup'));
+const Album = Async(() => import('./scenes/album'));
 
 class App extends Component {
   componentWillMount() {
@@ -45,6 +46,7 @@ class App extends Component {
       <Router>
         <Switch>
           <PrivateRoute exact path="/" component={Home} />
+          <PrivateRoute exact path="/albums/:id" component={Album} />
           <Route path="/signin" component={Signin} />
           <Route path="/signup" component={Signup} />
         </Switch>

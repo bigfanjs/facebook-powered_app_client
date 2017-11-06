@@ -1,0 +1,7 @@
+.album {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  overflow: hidden;
+  background-color: #1e1e1e;
+}

@@ -22,7 +22,7 @@ class AlbumList extends Component {
       <ul className="album_list">
         {
           albums
-            .filter((album) => album.photos)
+            .filter((album) => album.cover_photo)
             .map((album) => (
               <AlbumItem key={album.id} album={album} />
             ))

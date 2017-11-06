@@ -24,16 +24,20 @@ function updateStatusFailure(error) {
   };
 }
 
+const stateChangeCallback = (dispatch) => (
+  (res) => {
+    if (!res || res.error) {
+      dispatch(updateStatusFailure(res.error));
+    } else {
+      dispatch(updateStatusSuccess(res.status));
+    }
+  }
+);
+
 export const getLoginStatus = () => (
   (dispatch) => {
     dispatch(updateStatus());
-    FB.getLoginStatus((res) => {
-      if (!res || res.error) {
-        dispatch(updateStatusFailure(res.error));
-      } else {
-        dispatch(updateStatusSuccess(res.status));
-      }
-    });
+    FB.getLoginStatus(stateChangeCallback(dispatch));
   }
 );
 
@@ -41,13 +45,7 @@ export const login = () => (
   (dispatch) => {
     dispatch(updateStatus());
     FB.login(
-      (res) => {
-        if (!res || res.error) {
-          dispatch(updateStatusFailure(res.error));
-        } else {
-          dispatch(updateStatusSuccess(res.status));
-        }
-      },
+      stateChangeCallback(),
       {scope: 'user_photos'}
     );
   }
