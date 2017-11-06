@@ -30,7 +30,7 @@ class PhotoList extends Component {
               key={id}
               cellHeight={120}
               cols={1}
-              img={images[images.length - 1].source}
+              img={images[images.length - 4].source}
               title="photo"
             />
           ))

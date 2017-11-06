@@ -1,3 +1,5 @@
-.grid_item_img {
-  width: 200px;
+@media only screen and (max-device-width: 600px) {
+  .grid_item_img {
+    width: 414px;
+  }
 }
