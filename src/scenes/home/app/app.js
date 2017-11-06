@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Button from 'material-ui/Button';
 
+import Navbar from '../../../components/navbar';
 import AlbumList from '../album-list';
 import {login} from '../../../actions/fb-login';
 
@@ -21,6 +22,7 @@ class Home extends Component {
 
     return (
       <div className="home_container">
+        <Navbar />
         {
           !this.props.connectedToFacebook ?
             <Button

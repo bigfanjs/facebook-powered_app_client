@@ -1,0 +1,14 @@
+.navbar {
+  width: 100%;
+  height: 56px;
+  margin-bottom: 10px;
+}
+
+.navbar_menu_icon {
+  margin-left: -12;
+  margin-right: 20;
+}
+
+.navbar_title {
+  flex: 1;
+}
