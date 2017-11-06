@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
+import Navbar from '../navbar';
 import PhotoList from '../photo-list';
 
 import './app.css';
@@ -19,6 +20,7 @@ class Album extends Component {
 
     return (
       <div className="album">
+        <Navbar />
         <PhotoList albumID={id} />
       </div>
     );

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Button from 'material-ui/Button';
 
-import Navbar from '../../../components/navbar';
+import Navbar from '../navbar';
 import AlbumList from '../album-list';
 import {login} from '../../../actions/fb-login';
 
