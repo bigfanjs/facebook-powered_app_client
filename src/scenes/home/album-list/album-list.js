@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
 import AlbumItem from '../album-item';
+import LoadingIndicator from '../../../components/loading-indicator';
 import {fetchAlbums} from '../../../actions/albums';
 
 import './album-list.css';
@@ -15,7 +16,7 @@ class AlbumList extends Component {
     const albums = this.props.albums;
 
     if (!albums) {
-      return <span>loading Albums...</span>;
+      return <LoadingIndicator />;
     }
 
     return (

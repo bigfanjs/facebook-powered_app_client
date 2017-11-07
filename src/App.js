@@ -6,6 +6,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import Async from './components/async-component';
 import PrivateRoute from './components/private-route';
+import LoadingIndicator from './components/loading-indicator';
 import {load} from './actions/fb-javascript-sdk';
 import {getLoginStatus} from './actions/fb-login';
 
@@ -36,10 +37,12 @@ class App extends Component {
   }
 
   render() {
-    const {verifying, loading} = this.props;
+    const {status, loading} = this.props;
 
-    if (loading && verifying) {
-      return <span>...loading</span>;
+    if (status == null) return null;
+
+    if (loading) {
+      return <LoadingIndicator />;
     }
 
     return (
@@ -57,7 +60,7 @@ class App extends Component {
 
 const mapStateToProps = (state) => ({
   loading: state.user.loading,
-  verifying: state.user.status === 'verify'
+  status: state.user.status
 });
 const mapDispatchToProps = (dispatch) => ({
   getStatus() {

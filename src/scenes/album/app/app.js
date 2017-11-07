@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 
 import Navbar from '../navbar';
 import PhotoList from '../photo-list';
+import LoadingIndicator from '../../../components/loading-indicator';
 
 import './app.css';
 
@@ -10,12 +11,8 @@ class Album extends Component {
   render() {
     const {loading, SDKLoaded, id} = this.props;
 
-    if (!SDKLoaded) {
-      return <span>Loading Sdk...</span>;
-    }
-
-    if (loading) {
-      return <span>checking user connectivity...</span>;
+    if (!SDKLoaded || loading) {
+      return <LoadingIndicator />;
     }
 
     return (

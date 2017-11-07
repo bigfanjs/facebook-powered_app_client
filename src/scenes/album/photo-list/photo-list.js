@@ -4,6 +4,7 @@ import {GridList} from 'material-ui/GridList';
 
 import PhotoItem from '../photo-item';
 import {fetchAlbum} from '../../../actions/albums';
+import LoadingIndicator from '../../../components/loading-indicator';
 
 import './photo-list.css';
 
@@ -17,7 +18,7 @@ class PhotoList extends Component {
     const {loading, error, photos} = this.props;
 
     if (loading) {
-      return <span>Loading Album...</span>;
+      return <LoadingIndicator />;
     } else if (error) {
       return <span>{ error }</span>;
     }
