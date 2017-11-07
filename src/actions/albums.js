@@ -45,7 +45,8 @@ function fetchAlbumStart() {
 function fetchAlbumSuccess(album) {
   return {
     type: FETCH_ALBUM_SUCCESS,
-    album: album
+    photos: album.photos,
+    name: album.name
   };
 }
 

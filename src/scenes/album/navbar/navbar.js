@@ -51,6 +51,6 @@ class NavBar extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  name: state.checkedAlbum.album.name
+  name: state.checkedAlbum.name
 });
 export default connect(mapStateToProps)(NavBar);

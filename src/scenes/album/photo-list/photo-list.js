@@ -42,7 +42,7 @@ class PhotoList extends Component {
 }
 
 const mapStateToProps = ({ checkedAlbum }) => ({
-  photos: checkedAlbum.album.photos || [],
+  photos: checkedAlbum.photos || [],
   loading: checkedAlbum.loading,
   error: checkedAlbum.error,
   album: checkedAlbum.album
