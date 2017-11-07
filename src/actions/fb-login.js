@@ -45,7 +45,7 @@ export const login = () => (
   (dispatch) => {
     dispatch(updateStatus());
     FB.login(
-      stateChangeCallback(),
+      stateChangeCallback(dispatch),
       {scope: 'user_photos'}
     );
   }
