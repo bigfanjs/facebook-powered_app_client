@@ -37,11 +37,9 @@ class App extends Component {
   }
 
   render() {
-    const {status, loading} = this.props;
+    const {verifying, loading} = this.props;
 
-    if (status == null) return null;
-
-    if (loading) {
+    if (loading && verifying) {
       return <LoadingIndicator />;
     }
 
@@ -60,7 +58,7 @@ class App extends Component {
 
 const mapStateToProps = (state) => ({
   loading: state.user.loading,
-  status: state.user.status
+  verifying: state.user.status === 'verify'
 });
 const mapDispatchToProps = (dispatch) => ({
   getStatus() {
