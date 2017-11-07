@@ -1,0 +1,11 @@
+@media (max-device-width: 600px) {
+  .album_item {
+    width: 100%;
+  }
+}
+
+@media (min-device-width: 600px) {
+  .album_item {
+    width: 450px;
+  }
+}

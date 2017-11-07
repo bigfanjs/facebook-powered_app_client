@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
-import Typography from 'material-ui/Typography';
+import { GridListTile, GridListTileBar } from 'material-ui/GridList';
 import Button from 'material-ui/Button';
 
 import './album-item.css';
@@ -16,31 +15,24 @@ class AlbumItem extends Component {
   }
 
   render() {
-    const {id, name, description, cover_photo} = this.props.album;
-    const coverImage = cover_photo.images[0];
+    const {id, name, cover_photo} = this.props.album;
+    const coverImage = cover_photo.images[1];
 
     return (
-      <li className="album_item">
-        <Card className="album_item_card">
-          <CardMedia className="album_item_media" image={coverImage.source} />
-          <CardContent>
-            <Typography type="headline" component="h2">{name}</Typography>
-            <Typography
-              component="p"
-              color={description ? 'default' : 'secondary' }>
-              {description ? description : 'there is no attached description for this album' }
-            </Typography>
-          </CardContent>
-          <CardActions>
+      <GridListTile className="album_item">
+        <img src={coverImage.source} alt="" className="album_item_img" />
+        <GridListTileBar
+          title={name}
+          actionIcon={
             <Button
-              color="primary"
+              color="contrast"
               onClick={() => { this.handleSelectAlbum(id); }}
               dense>
               View
             </Button>
-          </CardActions>
-        </Card>
-      </li>
+          }
+        />
+      </GridListTile>
     );
   }
 }

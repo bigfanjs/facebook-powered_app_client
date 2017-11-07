@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import { GridList } from 'material-ui/GridList';
 
 import AlbumItem from '../album-item';
 import LoadingIndicator from '../../../components/loading-indicator';
@@ -20,15 +21,17 @@ class AlbumList extends Component {
     }
 
     return (
-      <ul className="album_list">
-        {
-          albums
-            .filter((album) => album.cover_photo)
-            .map((album) => (
-              <AlbumItem key={album.id} album={album} />
-            ))
-        }
-      </ul>
+      <div className="album_list">
+        <GridList cellHeight={180} className="albums_grid_list">
+          {
+            albums
+              .filter((album) => album.cover_photo)
+              .map((album) => (
+                <AlbumItem key={album.id} album={album} />
+              ))
+          }
+        </GridList>
+      </div>
     );
   }
 }
