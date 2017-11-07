@@ -59,11 +59,14 @@ function fetchAlbumFailure(error) {
 export const fetchAlbum = (id) => (
   (dispatch) => {
     dispatch(fetchAlbumStart());
-    FB.api(`/${ id }?fields=photos{images{source}}`, (res) => {
+    FB.api(`/${ id }?fields=name,photos{images{source}}`, (res) => {
       if (!res || res.error) {
         dispatch(fetchAlbumFailure(res && res.error));
       } else {
-        dispatch(fetchAlbumSuccess(res.photos.data));
+        dispatch(fetchAlbumSuccess({
+          name: res.name,
+          photos: res.photos.data
+        }));
       }
     });
   }

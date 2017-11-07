@@ -41,7 +41,7 @@ class NavBar extends Component {
             <IconButton color="contrast" aria-label="Menu" className="navbar_menu_icon">
               <ArrowBackIcon onClick={this.handleBack} />
             </IconButton>
-            <Typography type="title" color="inherit" className="navbar_title">Album</Typography>
+            <Typography type="title" color="inherit" className="navbar_title">{this.props.name}</Typography>
             <Button color="contrast" onClick={this.handleSignout}>Logout</Button>
           </ToolBar>
         </AppBar>
@@ -50,4 +50,7 @@ class NavBar extends Component {
   }
 }
 
-export default connect()(NavBar);
+const mapStateToProps = (state) => ({
+  name: state.checkedAlbum.album.name
+});
+export default connect(mapStateToProps)(NavBar);
