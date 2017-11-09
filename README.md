@@ -25,4 +25,4 @@ Already signed up users could sign in to the application with the same email and
 I believe this won't work with any other facebook account as I need to get the `user_photos` permission application approval. So to get this working I think you need to create a facebook application using the same facebook account you are gonna login with to the photo album app. Get the application ID and then assign in to the `appID` attribute of the `FB.init()` method's options on `src/App.js`.
 
 ## Screen Cast
-https://www.youtube.com/edit?video_id=xRS4QUPPRAQ&video_referrer=watch
+https://www.youtube.com/watch?v=xRS4QUPPRAQ
