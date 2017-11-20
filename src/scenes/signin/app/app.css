@@ -4,10 +4,22 @@
   height: 100%;
 } 
 
+@media (min-width: 600px) {
+  .sigin_form {
+    width: 450px;
+  }
+}
+
+@media (max-width: 600px) {
+  .sigin_form {
+    width: 90%;
+  }
+}
+
 .sigin_form {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
-  margin: 0 10px;
+  left: 50%;
+  transform: translate(-50%, -50%);
   padding: 0 10px 10px;
 }
