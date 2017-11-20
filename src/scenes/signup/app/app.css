@@ -2,12 +2,24 @@
   position: absolute;
   width: 100%;
   height: 100%;
-} 
+}
+
+@media (min-width: 600px) {
+  .signup_form {
+    width: 450px;
+  }
+}
+
+@media (max-width: 600px) {
+  .signup_form {
+    width: 90%;
+  }
+}
 
 .signup_form {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
-  margin: 0 10px;
+  left: 50%;
+  transform: translate(-50%, -50%);
   padding: 0 10px 10px;
 }
